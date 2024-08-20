@@ -1,21 +1,24 @@
-.container {
-    width: 300px;
+#container {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     background: linear-gradient(135deg, #5ff2ff, #27727d);
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
 }
 
 .titulo {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
-
+.nomeTitulo,.emailTitulo,.telefoneTitulo,.senhaTitulo{
+    font-size: 18px;
+    font-weight: bold;
+}
 .inputNome, .inputEmail, .inputTelefone, .inputSenha {
     width: 100%;
     display: flex;
@@ -23,42 +26,24 @@
     margin-bottom: 15px;
     background: #fff;
     border-radius: 50px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 .inputNome input, .inputEmail input, .inputTelefone input, .inputSenha input {
     border: none;
     outline: none;
-    width: 100%;
+    flex-grow: 1;
     padding-left: 10px;
     font-size: 14px;
     color: #333;
-    background: none;
 }
 
-.inputNome::before, .inputEmail::before, .inputTelefone::before, .inputSenha::before {
-    content: "";
-    display: block;
+.inputNome .username, .inputEmail .email, .inputTelefone .telefone, .inputSenha .senha {
     width: 24px;
     height: 24px;
     margin-right: 10px;
-}
-
-.inputNome::before {
-    background: url('/path/to/username-icon.svg') no-repeat center center;
-}
-
-.inputEmail::before {
-    background: url('/path/to/email-icon.svg') no-repeat center center;
-}
-
-.inputTelefone::before {
-    background: url('/path/to/phone-icon.svg') no-repeat center center;
-}
-
-.inputSenha::before {
-    background: url('/path/to/password-icon.svg') no-repeat center center;
 }
 
 .containerButton {
