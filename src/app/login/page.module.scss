@@ -72,6 +72,7 @@
 .buttonAcessar {
     width: 100%;
     padding: 10px;
+    margin-top: 5%;
     font-size: 16px;
     font-weight: bold;
     color: #fff;
@@ -115,4 +116,25 @@
 .googleIcon {
     width: 24px;
     height: 24px;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #aaa;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.signupPrompt {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signupLink {
+    color: #0070f3;
+    text-decoration: none;
+}
+
+.signupLink:hover {
+    text-decoration: underline;
 }

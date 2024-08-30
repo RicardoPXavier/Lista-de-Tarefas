@@ -31,6 +31,10 @@ export default function TelaLogin() {
                         <Image src={googleIcon} alt="Google" className={style.googleIcon}/>
                     </button>
                 </div>
+                <hr className={style.separator} />
+                <div className={style.signupPrompt}>
+                    <p>Ainda não possui uma conta? <a href="#" className={style.signupLink}>Cadastre-se</a></p>
+                </div>
             </div>
         </main>
     );
