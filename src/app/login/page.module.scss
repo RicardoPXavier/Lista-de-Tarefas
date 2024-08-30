@@ -1,0 +1,118 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.inputGroup {
+    margin-bottom: 15px;
+}
+
+.inputGroup label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+.forgotPassword {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.containerButton {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.buttonAcessar {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #1a73e8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.buttonAcessar:hover {
+    background: #1668c1;
+}
+
+.alternativeLogin {
+    text-align: center;
+}
+
+.alternativeLogin p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.googleLogin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.googleLogin:hover {
+    background: #f8f8f8;
+}
+
+.googleIcon {
+    width: 24px;
+    height: 24px;
+}
