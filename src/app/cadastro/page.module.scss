@@ -1,11 +1,20 @@
+.wrapper {
+    min-height: 91.5vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
 #container {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     padding: 20px;
     background: linear-gradient(135deg, #5ff2ff, #27727d);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
 }
 
 .titulo {
@@ -23,7 +32,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
     background: #fff;
     border-radius: 50px;
     padding: 10px;
