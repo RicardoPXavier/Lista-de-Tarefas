@@ -5,12 +5,18 @@
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 600px;
+    width: 100%;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
 }
-
+.wrapper{
+    //background: linear-gradient(135deg, #5ff2ff, #27727d);
+    min-height: 91.5vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+}
 .titulo {
     font-size: 24px;
     font-weight: bold;
@@ -57,7 +63,7 @@
 }
 
 .forgotPassword {
-    color: #1a73e8;
+    color: black;
     text-decoration: none;
     font-size: 14px;
     cursor: pointer;
@@ -110,7 +116,7 @@
 }
 
 .googleLogin:hover {
-    background: #f8f8f8;
+    background: black;
 }
 
 .googleIcon {
@@ -120,7 +126,7 @@
 
 .separator {
     border: none;
-    border-top: 1px solid #aaa;
+    border-top: 1px solid black;
     margin: 20px 0;
     width: 100%;
 }
@@ -131,7 +137,7 @@
 }
 
 .signupLink {
-    color: #0070f3;
+    color: black;
     text-decoration: none;
 }
 
