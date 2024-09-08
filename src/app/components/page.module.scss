@@ -1,0 +1,51 @@
+.wrapper {
+    min-height: 75vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    //background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
+.container{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.toList {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.buttonList,.buttonLogar {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 400px; 
+    width: 100%; 
+    box-sizing: border-box; 
+    height: 20vh;
+    // justify-content: space-between ;
+}
+
+.iconList {
+    margin-right: 10px;
+    width: 30%;
+}
+.link{
+    text-decoration: none;
+}
+.titulo {
+    font-size: 30px;
+    font-family: cursive;
+}
