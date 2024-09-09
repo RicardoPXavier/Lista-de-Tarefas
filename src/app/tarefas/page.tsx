@@ -8,6 +8,8 @@ import { auth, firestore } from "../../config/firebase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const novaTarefaSchema = z.object({
     id: z.string().optional(),
@@ -25,16 +27,23 @@ export default function TelaNovaTarefa() {
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<NovaTarefaSchema>({
         resolver: zodResolver(novaTarefaSchema)
     });
-
+    const formartarData = (dataIso:string) =>{
+        const data = new Date(dataIso);
+        return format (data, 'dd/mm/yyyy',{locale:ptBR})
+    };
 
     const addDocuments = async (data: NovaTarefaSchema) => {
         try {
             const user = auth.currentUser;
 
             if (user) {
-                const userId = user.uid;             
+                const userId = user.uid;            
+                const dataInicialFormatada = formartarData(data.dataInicial);
+                const dataFinalFormatada = formartarData(data.dataFinal); 
                 await addDoc(collection(firestore, 'novaTarefa'), {
                     ...data,
+                    dataInicial: dataInicialFormatada,
+                    dataFinal: dataFinalFormatada,
                     userId: userId,  
                 });
                 console.log('Nova tarefa adicionada com sucesso');
