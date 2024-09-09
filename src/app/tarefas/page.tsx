@@ -31,16 +31,15 @@ export default function TelaNovaTarefa() {
         try {
             const user = auth.currentUser;
 
-            if(user){
-                const userId = user.uid;
-    
-                await setDoc(doc(firestore, 'novaTarefa', userId), {
+            if (user) {
+                const userId = user.uid;             
+                await addDoc(collection(firestore, 'novaTarefa'), {
                     ...data,
-                    userId: userId,
+                    userId: userId,  
                 });
-                console.log('Documento adicionado com ID:', userId);
+                console.log('Nova tarefa adicionada com sucesso');
                 reset();
-            }        
+            }   
         } catch (err) {
             console.log('Documento não encontrado', err);
         }
@@ -82,8 +81,10 @@ export default function TelaNovaTarefa() {
                             <input className={styles.input_hora_final} type="time"
                                 {...register('horaFinal')}
                             />
-
-                            <button className={styles.button_cadastrar} type='submit'>Salvar Tarefa</button>
+                            <div  className={styles.containerButton}>
+                                <button className={styles.button_cadastrar} type='submit'> Salvar Tarefa </button>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
