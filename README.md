@@ -1,4 +1,4 @@
-# TO LIST
+# Lista de tarefa
 
 Aplicativo para para organizar tarefas e compromissos. Permite criar, visualizar e gerenciar agendamentos diários, garantindo que você nunca perca um compromisso importante. 
 
