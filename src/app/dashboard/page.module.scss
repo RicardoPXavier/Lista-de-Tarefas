@@ -1,10 +1,35 @@
 .wrapper {
     min-height: 75vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    //background: linear-gradient(135deg, #5ff2ff, #27727d);
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.buttonLogout {
+    background: linear-gradient(135deg, #ff6868, #faa0a0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.iconExcluir {
+    margin-right: 5px;
 }
 
 .container {
@@ -12,6 +37,7 @@
     max-width: 800px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .toList {
@@ -22,7 +48,7 @@
     margin-top: 10vh;
 }
 
-.buttonList,.buttonLogar  {
+.buttonList, .buttonLogar {
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #5ff2ff, #27727d);
@@ -38,13 +64,11 @@
     height: 20vh;
 }
 
-.buttonLogar {  
-    &:disabled {
-        background: linear-gradient(135deg, #606161, #070707);
-      color: white;
-      cursor: not-allowed;
-    }
-  }
+.buttonLogar:disabled {
+    background: linear-gradient(135deg, #606161, #070707);
+    color: white;
+    cursor: not-allowed;
+}
 
 .iconList {
     margin-right: 10px;

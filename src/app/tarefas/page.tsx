@@ -1,5 +1,6 @@
 "use client"
 import Head from 'next/head';
+import Image from 'next/image';
 import styles from "../tarefas/page.module.scss"; // Importa o arquivo SCSS como um módulo
 import React from 'react'
 import { useState, useEffect } from 'react';
@@ -10,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import voltar from "../../icons/voltar.svg"
+import Link from 'next/link';
 
 const novaTarefaSchema = z.object({
     id: z.string().optional(),
@@ -18,7 +21,8 @@ const novaTarefaSchema = z.object({
     dataInicial: z.string(),
     dataFinal: z.string(),
     horaInicial: z.string(),
-    horaFinal: z.string()
+    horaFinal: z.string(),
+    completa: z.boolean().default(false),
 });
 
 export type NovaTarefaSchema = z.infer<typeof novaTarefaSchema>;
@@ -27,9 +31,9 @@ export default function TelaNovaTarefa() {
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<NovaTarefaSchema>({
         resolver: zodResolver(novaTarefaSchema)
     });
-    const formartarData = (dataIso:string) =>{
+    const formartarData = (dataIso: string) => {
         const data = new Date(dataIso);
-        return format (data, 'dd/mm/yyyy',{locale:ptBR})
+        return format(data, 'dd-MM-yyyy', { locale: ptBR })
     };
 
     const addDocuments = async (data: NovaTarefaSchema) => {
@@ -37,20 +41,28 @@ export default function TelaNovaTarefa() {
             const user = auth.currentUser;
 
             if (user) {
-                const userId = user.uid;            
+                const userId = user.uid;
+                const usuarioId = userId;
                 const dataInicialFormatada = formartarData(data.dataInicial);
-                const dataFinalFormatada = formartarData(data.dataFinal); 
+                const dataFinalFormatada = formartarData(data.dataFinal);
                 await addDoc(collection(firestore, 'novaTarefa'), {
                     ...data,
                     dataInicial: dataInicialFormatada,
                     dataFinal: dataFinalFormatada,
-                    userId: userId,  
+                    userId: userId,
+                    usuarioId: userId,
                 });
                 console.log('Nova tarefa adicionada com sucesso');
                 reset();
-            }   
+            }
+
+
         } catch (err) {
             console.log('Documento não encontrado', err);
+
+            if (!auth.currentUser) {
+                console.log("Voce precisa estar logado para acessar as tarefas", err);
+            }
         }
     };
 
@@ -59,6 +71,18 @@ export default function TelaNovaTarefa() {
             <main>
                 <div className={styles.wrapper}>
                     <div id={styles.container}>
+                        <Link href={"/listagem"}>
+                            <div className={styles.setaVoltar}>
+                                <Image
+                                    className={styles.iconExcluir}
+                                    src={voltar}
+                                    alt="Icon"
+                                    width={30}
+                                    height={30}
+                                />
+                            </div>
+                        </Link>
+
                         <div className={styles.titulo}>Nova Tarefa</div>
                         <form onSubmit={handleSubmit(addDocuments)}>
                             <label className={styles.input_campo}>Nome da tarefa</label>
@@ -90,10 +114,10 @@ export default function TelaNovaTarefa() {
                             <input className={styles.input_hora_final} type="time"
                                 {...register('horaFinal')}
                             />
-                            <div  className={styles.containerButton}>
+                            <div className={styles.containerButton}>
                                 <button className={styles.button_cadastrar} type='submit'> Salvar Tarefa </button>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>

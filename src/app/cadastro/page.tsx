@@ -45,6 +45,7 @@ export default function TelaCadastro() {
                 telefone: telefoneComoNumero,
                 userId: userId,
             });
+            reset();
 
             console.log('Documento adicionado com ID:', userId);
         } catch (err) {
