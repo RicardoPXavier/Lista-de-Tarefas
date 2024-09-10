@@ -8,8 +8,10 @@ import {
   updateDoc,
   QueryDocumentSnapshot,
   DocumentData,
+  query,
+  where,
 } from "firebase/firestore";
-import { firestore } from "../../config/firebase";
+import { firestore, auth } from "../../config/firebase";
 import styles from "../listagem/page.module.scss";
 import Image from "next/image";
 import certo from "../../icons/certo1.svg";
@@ -39,20 +41,30 @@ export default function ListaTarefas() {
 
   const fetchResults = async () => {
     try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        console.log("Usuário não está autenticado");
+        return;
+      }
+
+      const userId = user.uid;
       const novaTarefaCollection = collection(firestore, "novaTarefa");
-      const querySnapshot = await getDocs(novaTarefaCollection);
+      const q = query(novaTarefaCollection, where("userId", "==", userId));
+      const querySnapshot = await getDocs(q);
+
       const results: Tarefa[] = querySnapshot.docs.map(
         (doc: QueryDocumentSnapshot<DocumentData>) => {
           const data = doc.data();
           return {
-            id: doc.id, // ID do documento
+            id: doc.id,
             nome: data.nome as string,
             descricao: data.descricao as string,
             dataInicial: data.dataInicial as string,
             dataFinal: data.dataFinal as string,
             horaInicial: data.horaInicial as string,
             horaFinal: data.horaFinal as string,
-            completa: data.completa as boolean, // Adicionar o campo completa
+            completa: data.completa as boolean,
           };
         }
       );
