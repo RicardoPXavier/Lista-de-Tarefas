@@ -10,12 +10,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60vh;
     padding: 20px;
     background-color: #f7f7f7;
     max-width: 500px;
     width: 100%;
     background: linear-gradient(135deg, #5ff2ff, #27727d);
+    overflow-y: scroll;
 }
 
 .titulo {
@@ -113,13 +113,14 @@
     margin: 0px 25px;
     border-radius: 5px;
     border: 1px solid black ;
+    cursor: pointer;
 }
 
 .bottonExcluir {
     margin: 0px 20px;
     border-radius: 5px;
     border: 1px solid black ;
-
+    cursor: pointer;
 }
 
 .pesquisa {
@@ -147,6 +148,7 @@
 .iconCompletar,.iconExcluir {
     justify-content: center;
     align-items: center;
+    cursor: auto;
     
 
 }
@@ -170,4 +172,7 @@
     border: none;
     background:blue($color: #000000);
     margin-left: 34vh;
+}
+.tarefaCompleta {
+    text-decoration: line-through;
 }

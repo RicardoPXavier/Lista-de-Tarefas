@@ -21,6 +21,7 @@ const novaTarefaSchema = z.object({
     dataFinal: z.string(),
     horaInicial: z.string(),
     horaFinal: z.string(),
+    completa: z.boolean().default(false),
 });
 
 export type NovaTarefaSchema = z.infer<typeof novaTarefaSchema>;
