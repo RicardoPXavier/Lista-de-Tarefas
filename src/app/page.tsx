@@ -1,5 +1,5 @@
 import Image from "next/image";
-import TelaInicial from "./components/page";
+import TelaInicial from "./dashboard/page";
 
 export default function Home() {
   return (

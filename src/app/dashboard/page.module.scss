@@ -12,8 +12,19 @@
     max-width: 800px;
     display: flex;
     flex-direction: column;
+    
+}
+.header{
+    display:  flex;
+    flex-direction: column;
+
 }
 
+.buttonLogout{
+    width: 20px;
+    display: flex;
+    justify-content: end;
+}
 .toList {
     display: flex;
     justify-content: center;

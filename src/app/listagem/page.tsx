@@ -1,14 +1,15 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, deleteDoc, updateDoc, QueryDocumentSnapshot, DocumentData,where } from 'firebase/firestore';
-import { firestore } from "../../config/firebase";
-import styles from "../teste/page.module.scss";
+import { collection, getDocs, doc, deleteDoc, updateDoc, query,QueryDocumentSnapshot, DocumentData,where} from 'firebase/firestore';
+import { auth,firestore } from "../../config/firebase";
+import styles from "../listagem/page.module.scss";
 import Image from 'next/image';
 import certo from '../../icons/certo1.svg';
 import excluir from "../../icons/excluir1.svg"
 import { date } from 'zod';
 import adicionar from "../../icons/botãoAdd.svg"
 import Link from 'next/link';
+import { NovaTarefaSchema } from '../tarefas/page';
 
 interface Tarefa {
     id: string;
@@ -18,20 +19,12 @@ interface Tarefa {
     dataFinal: string;
     horaInicial: string;
     horaFinal: string;
-
-
-
-
 }
 
 export default function ListaTarefas() {
     const [todos, setTodos] = useState<Tarefa[]>([]);
-
-
     const [searchTerm, setSearchTerm] = useState('');
     const [searchDate, setSearchDate] = useState('');
-
-
     useEffect(() => {
         fetchResults();
     }, []);
@@ -40,17 +33,24 @@ export default function ListaTarefas() {
         try {
             const novaTarefaCollection = collection(firestore, 'novaTarefa');
             const querySnapshot = await getDocs(novaTarefaCollection);
-            const results: DocumentData[] = [];
-            querySnapshot.forEach((doc: QueryDocumentSnapshot) => {
-                results.push({ id: doc.id, ...doc.data() });
-                console.log("Tarefa encontrada", doc.id);
+            const results: Tarefa[] = querySnapshot.docs.map((doc: QueryDocumentSnapshot<DocumentData>) => {
+                const data = doc.data();
+                return {
+                    id: doc.id, // ID do documento
+                    nome: data.nome as string,
+                    descricao: data.descricao as string,
+                    dataInicial: data.dataInicial as string,
+                    dataFinal: data.dataFinal as string,
+                    horaInicial: data.horaInicial as string,
+                    horaFinal: data.horaFinal as string
+                };
             });
-           setTodos(results);
+
+            setTodos(results);
         } catch (err) {
             console.log("Erro ao buscar tarefas", err);
         }
     };
-
     // const handleCompletarTarefa = async (tarefaId: string) => {
     //     try {
     //         const tarefaRef = doc(firestore, 'novaTarefa', tarefaId);
