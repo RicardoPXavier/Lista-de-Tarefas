@@ -5,7 +5,7 @@ import logar from "../../icons/logar.svg"
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged,signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { subscribe } from "diagnostics_channel";
 import { auth, firestore } from "../../config/firebase";
 import logout from "../../icons/logout.svg"
@@ -28,24 +28,26 @@ export default function TelaInicial() {
 
     const handleLogout = async () => {
         try {
-            await signOut(auth); 
-        } catch(err) {
+            await signOut(auth);
+        } catch (err) {
             console.log(err);
         }
     }
-    
+
     return (
         <main>
             <div className={style.wrapper}>
                 <div className={style.container}>
                     <div className={style.header}>
                         <button className={style.buttonLogout} onClick={handleLogout}>
-                            <Image className={style.iconExcluir}
+                            <Image
+                                className={style.iconExcluir}
                                 src={logout}
-                                alt="icon"
+                                alt="Logout Icon"
                                 width={20}
                                 height={20}
-                                />
+                            />
+                            <span>Logout</span>
                         </button>
                     </div>
 
