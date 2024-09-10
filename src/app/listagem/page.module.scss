@@ -1,0 +1,172 @@
+.wrapper {
+    min-height: 89vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    padding: 20px;
+    background-color: #f7f7f7;
+    max-width: 500px;
+    width: 100%;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #090909;
+    width: 100%;
+}
+
+.app {
+    max-width: 450px;
+    margin: 0 auto 300px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+    align-items: center
+}
+
+.cardTarefa {
+    width: calc(100% - 40px);
+    margin: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.nome {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.dataContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dataI {
+    font-size: 15px;
+    color: #555;
+    margin-right: 20px;
+}
+
+.dataF {
+    font-size: 15px;
+    color: #555;
+}
+
+.horaContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.horaI {
+    font-size: 15px;
+    color: #555;
+    margin-right: 20px;
+
+}
+
+.horaF {
+    font-size: 15px;
+    color: #555;
+
+}
+
+.botton {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.bottonComple {
+    margin: 0px 25px;
+    border-radius: 5px;
+    border: 1px solid black ;
+}
+
+.bottonExcluir {
+    margin: 0px 20px;
+    border-radius: 5px;
+    border: 1px solid black ;
+}
+
+.pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.pesquisa input {
+    flex: 0;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.separador {
+    margin: 0 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.iconCompletar,.iconExcluir {
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.containerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.buttonAdd {
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    background:blue($color: #000000);
+    margin-left: 34vh;
+}

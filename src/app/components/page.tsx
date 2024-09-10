@@ -28,10 +28,12 @@ export default function TelaInicial() {
             <div className={style.wrapper}>
                 <div className={style.container}>
                     <div className={style.toList}>
+                    <Link href="/listagem" className={style.link}>
                         <button className={style.buttonList}>
                             <Image className={style.iconList} src={toListIcon} alt="list" />
                             <div className={style.titulo}>Minhas Tarefas</div>
                         </button>
+                    </Link>
                     </div>
 
                     <div className={style.toList}>

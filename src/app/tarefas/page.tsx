@@ -18,7 +18,8 @@ const novaTarefaSchema = z.object({
     dataInicial: z.string(),
     dataFinal: z.string(),
     horaInicial: z.string(),
-    horaFinal: z.string()
+    horaFinal: z.string(),
+    usuarioId:z.string().optional()
 });
 
 export type NovaTarefaSchema = z.infer<typeof novaTarefaSchema>;
@@ -37,20 +38,28 @@ export default function TelaNovaTarefa() {
             const user = auth.currentUser;
 
             if (user) {
-                const userId = user.uid;            
+                const userId = user.uid;        
+                const usuarioId= user.uid;   
                 const dataInicialFormatada = formartarData(data.dataInicial);
                 const dataFinalFormatada = formartarData(data.dataFinal); 
                 await addDoc(collection(firestore, 'novaTarefa'), {
                     ...data,
                     dataInicial: dataInicialFormatada,
                     dataFinal: dataFinalFormatada,
-                    userId: userId,  
+                    userId: userId, 
+                    usuarioId:userId,
                 });
                 console.log('Nova tarefa adicionada com sucesso');
                 reset();
-            }   
+            }  
+            
+          
         } catch (err) {
             console.log('Documento não encontrado', err);
+            
+            if(!auth.currentUser){
+                console.log("Voce precisa estar logado para acessar as tarefas",err);
+            }
         }
     };
 
