@@ -1,0 +1,71 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; 
+    padding: 20px;
+    background-color: #f7f7f7;
+    max-width: 500px; 
+    width: 100%;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
+.wrapper{
+    min-height: 89vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+
+}
+.titulo {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #090909;
+    width: 100%;
+}
+
+.input_group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input_campo {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px; 
+}
+
+.input_nome,
+.input_descricao,
+.input_data_inicio,
+.input_data_final,
+.input_hora_inicial,
+.input_hora_final {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.button_cadastrar {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    background-color: #1b0963;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.button_cadastrar:hover {
+    background-color: #0c021f;
+}
