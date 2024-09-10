@@ -13,6 +13,7 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import voltar from "../../icons/voltar.svg"
 import Link from 'next/link';
+
 const novaTarefaSchema = z.object({
     id: z.string().optional(),
     nome: z.string(),
@@ -32,7 +33,7 @@ export default function TelaNovaTarefa() {
     });
     const formartarData = (dataIso: string) => {
         const data = new Date(dataIso);
-        return format(data, 'dd/mm/yyyy', { locale: ptBR })
+        return format(data, 'dd-MM-yyyy', { locale: ptBR })
     };
 
     const addDocuments = async (data: NovaTarefaSchema) => {
@@ -42,7 +43,6 @@ export default function TelaNovaTarefa() {
             if (user) {
                 const userId = user.uid;
                 const usuarioId = userId;
-
                 const dataInicialFormatada = formartarData(data.dataInicial);
                 const dataFinalFormatada = formartarData(data.dataFinal);
                 await addDoc(collection(firestore, 'novaTarefa'), {
