@@ -1,0 +1,80 @@
+.wrapper {
+    min-height: 91.5vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    //background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
+#container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.nomeTitulo,.emailTitulo,.telefoneTitulo,.senhaTitulo{
+    font-size: 18px;
+    font-weight: bold;
+}
+.inputNome, .inputEmail, .inputTelefone, .inputSenha {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+    background: #fff;
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.inputNome input, .inputEmail input, .inputTelefone input, .inputSenha input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.inputNome .username, .inputEmail .email, .inputTelefone .telefone, .inputSenha .senha {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.containerButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonCadastrar {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+.buttonCadastrar:hover {
+    background: linear-gradient(135deg, #5ff2ff, #27727d);
+}
