@@ -10,10 +10,10 @@ export default function TelaLogin() {
 "use client"
 import Image from 'next/image';
 import style from '@/app/login/page.module.scss';
-import googleIcon from '../../icons/google.svg';
 import { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword ,sendPasswordResetEmail } from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth, firestore } from "../../config/firebase";
+import { Link } from 'react-router-dom';
 
 interface FirebaseError extends Error {
     code: string;
@@ -25,7 +25,7 @@ export default function TelaLogin() {
     const [message, setMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [resetPassword, setResetPassword] = useState(false);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
@@ -34,6 +34,8 @@ export default function TelaLogin() {
             const userId = user.uid
             console.log("Usuario encontrado", userId);
             setMessage('Login bem-sucedido!');
+            setIsLoggedIn(true);
+            window.location.href = "/";
         } catch (err: any) {
             if (err.code === 'auth/use-not-found' || err.code === 'auth/wrong-password') {
                 setErrorMessage('Nenhum usuário ou senha cadastrada');
@@ -125,8 +127,8 @@ export default function TelaLogin() {
                             )}
 
                             <div className={style.forgotPassword}
-                                 onClick={() => setResetPassword(!resetPassword)}>
-                                    {resetPassword ? 'Voltar Login' : 'Esquecer sua senha?'}
+                                onClick={() => setResetPassword(!resetPassword)}>
+                                {resetPassword ? 'Voltar Login' : 'Esquecer sua senha?'}
                             </div>
                         </div>
                         {message && (

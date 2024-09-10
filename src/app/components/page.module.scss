@@ -1,12 +1,13 @@
 .wrapper {
-    min-height: 75vh; 
+    min-height: 75vh;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding: 20px; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     //background: linear-gradient(135deg, #5ff2ff, #27727d);
 }
-.container{
+
+.container {
     width: 100%;
     max-width: 800px;
     display: flex;
@@ -21,7 +22,7 @@
     margin-top: 10vh;
 }
 
-.buttonList,.buttonLogar {
+.buttonList,.buttonLogar  {
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #5ff2ff, #27727d);
@@ -31,20 +32,29 @@
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    max-width: 400px; 
-    width: 100%; 
-    box-sizing: border-box; 
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
     height: 20vh;
-    // justify-content: space-between ;
 }
+
+.buttonLogar {  
+    &:disabled {
+        background: linear-gradient(135deg, #606161, #070707);
+      color: white;
+      cursor: not-allowed;
+    }
+  }
 
 .iconList {
     margin-right: 10px;
     width: 30%;
 }
-.link{
+
+.link {
     text-decoration: none;
 }
+
 .titulo {
     font-size: 30px;
     font-family: cursive;
