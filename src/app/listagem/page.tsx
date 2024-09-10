@@ -25,7 +25,7 @@ interface Tarefa {
   dataFinal: string;
   horaInicial: string;
   horaFinal: string;
-  completa: boolean; // Adicionar o campo completa
+  completa: boolean;
 }
 
 export default function ListaTarefas() {

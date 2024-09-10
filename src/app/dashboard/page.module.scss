@@ -69,6 +69,11 @@
     color: white;
     cursor: not-allowed;
 }
+.buttonList:disabled{
+    background: linear-gradient(135deg, #606161, #070707);
+    color: white;
+    cursor: not-allowed;
+}
 
 .iconList {
     margin-right: 10px;
