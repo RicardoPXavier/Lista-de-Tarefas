@@ -19,7 +19,6 @@ const novaTarefaSchema = z.object({
     dataFinal: z.string(),
     horaInicial: z.string(),
     horaFinal: z.string(),
-    usuarioId:z.string().optional()
 });
 
 export type NovaTarefaSchema = z.infer<typeof novaTarefaSchema>;
@@ -39,7 +38,8 @@ export default function TelaNovaTarefa() {
 
             if (user) {
                 const userId = user.uid;        
-                const usuarioId= user.uid;   
+                const usuarioId= userId;   
+
                 const dataInicialFormatada = formartarData(data.dataInicial);
                 const dataFinalFormatada = formartarData(data.dataFinal); 
                 await addDoc(collection(firestore, 'novaTarefa'), {
