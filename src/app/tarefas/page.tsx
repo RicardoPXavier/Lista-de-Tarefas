@@ -19,6 +19,7 @@ const novaTarefaSchema = z.object({
     dataFinal: z.string(),
     horaInicial: z.string(),
     horaFinal: z.string(),
+    completa: z.boolean().default(false),
 });
 
 export type NovaTarefaSchema = z.infer<typeof novaTarefaSchema>;
@@ -27,9 +28,9 @@ export default function TelaNovaTarefa() {
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<NovaTarefaSchema>({
         resolver: zodResolver(novaTarefaSchema)
     });
-    const formartarData = (dataIso:string) =>{
+    const formartarData = (dataIso: string) => {
         const data = new Date(dataIso);
-        return format (data, 'dd/mm/yyyy',{locale:ptBR})
+        return format(data, 'dd/mm/yyyy', { locale: ptBR })
     };
 
     const addDocuments = async (data: NovaTarefaSchema) => {
@@ -37,28 +38,28 @@ export default function TelaNovaTarefa() {
             const user = auth.currentUser;
 
             if (user) {
-                const userId = user.uid;        
-                const usuarioId= userId;   
+                const userId = user.uid;
+                const usuarioId = userId;
 
                 const dataInicialFormatada = formartarData(data.dataInicial);
-                const dataFinalFormatada = formartarData(data.dataFinal); 
+                const dataFinalFormatada = formartarData(data.dataFinal);
                 await addDoc(collection(firestore, 'novaTarefa'), {
                     ...data,
                     dataInicial: dataInicialFormatada,
                     dataFinal: dataFinalFormatada,
-                    userId: userId, 
-                    usuarioId:userId,
+                    userId: userId,
+                    usuarioId: userId,
                 });
                 console.log('Nova tarefa adicionada com sucesso');
                 reset();
-            }  
-            
-          
+            }
+
+
         } catch (err) {
             console.log('Documento não encontrado', err);
-            
-            if(!auth.currentUser){
-                console.log("Voce precisa estar logado para acessar as tarefas",err);
+
+            if (!auth.currentUser) {
+                console.log("Voce precisa estar logado para acessar as tarefas", err);
             }
         }
     };
@@ -99,10 +100,10 @@ export default function TelaNovaTarefa() {
                             <input className={styles.input_hora_final} type="time"
                                 {...register('horaFinal')}
                             />
-                            <div  className={styles.containerButton}>
+                            <div className={styles.containerButton}>
                                 <button className={styles.button_cadastrar} type='submit'> Salvar Tarefa </button>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
