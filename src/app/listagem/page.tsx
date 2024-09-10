@@ -18,6 +18,10 @@ interface Tarefa {
     dataFinal: string;
     horaInicial: string;
     horaFinal: string;
+
+
+
+
 }
 
 export default function ListaTarefas() {
@@ -34,27 +38,15 @@ export default function ListaTarefas() {
 
     const fetchResults = async () => {
         try {
-            const user = auth.currentUser;
-
-            if (user) {
-                const userId = user.uid;
-
-                // Cria a query para buscar tarefas apenas do usuário logado
-                const novaTarefaCollection = collection(firestore, 'novaTarefa');
-                const q = query(novaTarefaCollection, where('userId', '==', userId));
-                const querySnapshot = await getDocs(q);
-
-                const results: DocumentData[] = [];
-                querySnapshot.forEach((doc: QueryDocumentSnapshot) => {
-                    results.push({ id: doc.id, ...doc.data() });
-                    console.log("Tarefa encontrada", doc.id);
-                });
-                setTodos(results);
-            }  else {
-                console.log('Nenhum usuário logado');
-            }
-            
-        }  catch (err) {
+            const novaTarefaCollection = collection(firestore, 'novaTarefa');
+            const querySnapshot = await getDocs(novaTarefaCollection);
+            const results: DocumentData[] = [];
+            querySnapshot.forEach((doc: QueryDocumentSnapshot) => {
+                results.push({ id: doc.id, ...doc.data() });
+                console.log("Tarefa encontrada", doc.id);
+            });
+           setTodos(results);
+        } catch (err) {
             console.log("Erro ao buscar tarefas", err);
         }
     };
